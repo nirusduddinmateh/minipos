@@ -6,10 +6,6 @@
     <title>miniPOS</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        form label {
-            font-weight: bold;
-            color: ;
-        }
     </style>
 </head>
 <body>
@@ -39,14 +35,15 @@
         include 'sales.php';
         $script = 'sale_script.php';
     } else {
-        echo '<h2>Welcome</h2><p>Select a page from the menu.</p>';
-        $script = false;
+        include 'dashboard.php';
+        $script = 'dashboard_script.php';
     }
     ?>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Bootstrap JS -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <?php
 if ($script) {
     include "script/$script";
