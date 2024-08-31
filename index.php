@@ -20,6 +20,9 @@
                 <a class="nav-link" href="index.php?page=sales">ขาย</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="index.php?page=users">แอดมิน</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="logout.php">Logout</a>
             </li>
         </ul>
@@ -34,6 +37,9 @@
     } elseif ($page === 'sales') {
         include 'sales.php';
         $script = 'sale_script.php';
+    } elseif ($page === 'users') {
+        include 'users.php';
+        $script = 'user_script.php';
     } else {
         include 'dashboard.php';
         $script = 'dashboard_script.php';

@@ -9,32 +9,30 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'GET':
         if (isset($_GET['id'])) {
-            $stmt = $pdo->prepare('SELECT * FROM products WHERE id = :id');
+            $stmt = $pdo->prepare('SELECT * FROM users WHERE id = :id');
             $stmt->execute(['id' => $_GET['id']]);
             echo json_encode($stmt->fetch(PDO::FETCH_ASSOC));
         } else {
-            $stmt = $pdo->query('SELECT * FROM products');
+            $stmt = $pdo->query('SELECT * FROM users');
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }
         break;
     case 'POST':
         if (isset($_POST['id']) && !empty($_POST['id'])) {
-            // Update product
-            $stmt = $pdo->prepare('UPDATE products SET name = :name, description = :description, price = :price WHERE id = :id');
+            // Update User
+            $stmt = $pdo->prepare('UPDATE users SET password = :password, username = :username WHERE id = :id');
             $stmt->execute([
                 'id' => $_POST['id'],
-                'name' => $_POST['name'],
-                'description' => $_POST['description'],
-                'price' => $_POST['price']
+                'username' => $_POST['username'],
+                'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
             ]);
-            echo json_encode(['message' => 'Product updated successfully.']);
+            echo json_encode(['message' => 'User updated successfully.']);
         } else {
-            // Insert new product
-            $stmt = $pdo->prepare('INSERT INTO products (name, description, price) VALUES (:name, :description, :price)');
+            // Insert new User
+            $stmt = $pdo->prepare('INSERT INTO users (username, password) VALUES (:username, :password)');
             $stmt->execute([
-                'name' => $_POST['name'],
-                'description' => $_POST['description'],
-                'price' => $_POST['price']
+                'username' => $_POST['username'],
+                'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
             ]);
             echo json_encode(['message' => 'บันทึกข้อมูลสำเร็จ.']);
         }
@@ -43,9 +41,9 @@ switch ($method) {
     case 'DELETE':
         parse_str(file_get_contents('php://input'), $_DELETE);
         if (isset($_DELETE['id'])) {
-            $stmt = $pdo->prepare('DELETE FROM products WHERE id = :id');
+            $stmt = $pdo->prepare('DELETE FROM users WHERE id = :id');
             $stmt->execute(['id' => $_DELETE['id']]);
-            echo json_encode(['message' => 'Product deleted successfully.']);
+            echo json_encode(['message' => 'User deleted successfully.']);
         }
         break;
 
