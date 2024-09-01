@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2024 at 09:06 AM
+-- Generation Time: Sep 01, 2024 at 09:13 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `minipos`
 --
+DROP DATABASE IF EXISTS `minipos`;
+CREATE DATABASE IF NOT EXISTS `minipos` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `minipos`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +30,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `cat`
 --
 
+DROP TABLE IF EXISTS `cat`;
 CREATE TABLE `cat` (
   `id` int(20) NOT NULL,
   `name` varchar(255) NOT NULL
@@ -46,6 +50,7 @@ INSERT INTO `cat` (`id`, `name`) VALUES
 -- Table structure for table `products`
 --
 
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -70,6 +75,7 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`) VALUES
 -- Table structure for table `sales_transactions`
 --
 
+DROP TABLE IF EXISTS `sales_transactions`;
 CREATE TABLE `sales_transactions` (
   `id` int(11) NOT NULL,
   `product_id` int(11) DEFAULT NULL,
@@ -105,6 +111,7 @@ INSERT INTO `sales_transactions` (`id`, `product_id`, `quantity`, `total`, `tran
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) DEFAULT NULL,
