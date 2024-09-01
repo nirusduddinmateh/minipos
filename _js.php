@@ -11,7 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/locale/th.js"></script>
 <script>
     $(document).ready(function() {
-        $('.select2-basic').select2();
+        $('.select2-basic').select2(); //
         // เมื่อปิด model ให้ reset form
         $('.modal').on('hidden.bs.modal', function (e) {
             var formElement = $(this).find("form");
