@@ -13,11 +13,18 @@ switch ($method) {
         if (isset($_GET['id'])) {
             echo json_encode($model->readOne(['id' => $_GET['id']]));
         } else {
+            $joins = [];
             $conditions = [];
             if (isset($_GET['search'])) {
                 $conditions['name'] = ['like', '%'.$_GET['search'].'%'];
             }
-            echo json_encode($model->read($conditions));
+            $products = $model->read($conditions, null, $joins);
+
+            foreach ($products as &$product) {
+                $cat = (new Model($db, 'cat'))->readOne(['id' => $product['cat_id']]);
+                $product['cat'] = $cat;
+            }
+            echo json_encode($products);
         }
         break;
 
@@ -40,6 +47,7 @@ switch ($method) {
         if (!empty($_POST['id'])) {
             $data = [
                 'id' => $_POST['id'],
+                'cat_id' => $_POST['cat_id'],
                 'name' => $_POST['name'],
                 'description' => $_POST['description'],
                 'price' => $_POST['price']
@@ -55,6 +63,7 @@ switch ($method) {
         } else {
             // เพิ่มข้อมูล
             $model->create([
+                'cat_id' => $_POST['cat_id'],
                 'name' => $_POST['name'],
                 'description' => $_POST['description'],
                 'price' => $_POST['price'],

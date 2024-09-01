@@ -22,17 +22,19 @@ switch ($method) {
         break;
 
     case 'POST':
-        die(500);
         if (!empty($_POST['id'])) {
+            $data = [
+                'id' => $_POST['id'],
+                'name' => $_POST['name'],
+                'role' => $_POST['role'],
+                'username' => $_POST['username']
+            ];
+            if (!empty($_POST['password'])) {
+                $data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            }
             // อัปเดทข้อมูล
             $model->update(
-                [
-                    'id' => $_POST['id'],
-                    'name' => $_POST['name'],
-                    'role' => $_POST['role'],
-                    'username' => $_POST['username'],
-                    'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-                ],
+                $data,
                 ['id' => $_POST['id']]
             );
             echo json_encode(['message' => 'บันทึกข้อมูลสำเร็จ']);

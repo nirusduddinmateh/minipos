@@ -28,6 +28,7 @@
                 <tr>
                     <th>#</th>
                     <th>รูปภาพ</th>
+                    <th>หมวดหมู่</th>
                     <th>ชื่อ</th>
                     <th>คำอธิบาย</th>
                     <th>ราคาขาย</th>
@@ -54,6 +55,13 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="id" name="id">
+
+                    <div class="form-group">
+                        <label for="cat_id">เลือกหมวดหมู่</label>
+                        <select id="cat_id" name="cat_id" class="form-control">
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="name">ชื่อสินค้า</label>
                         <input type="text" class="form-control" id="name" name="name" required>

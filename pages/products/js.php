@@ -6,6 +6,7 @@ $fileAPI = "pages/" . $basename . "/api.php";
     $(document).ready(function () {
         // การดึงและแสดงรายการ
         fetch<?php echo $basename; ?>();
+        fetchCat();
 
         $('#searchForm').on('submit', function (e) {
             e.preventDefault();
@@ -47,6 +48,7 @@ $fileAPI = "pages/" . $basename . "/api.php";
                 data: {id: id},
                 success: function (response) {
                     $('#id').val(response.id);
+                    $('#cat_id').val(response.cat_id);
                     $('#name').val(response.name);
                     $('#description').val(response.description);
                     $('#price').val(response.price);
@@ -99,6 +101,7 @@ $fileAPI = "pages/" . $basename . "/api.php";
                     <tr>
                         <td style="width: 100px">${item.id}</td>
                         <td>${image}</td>
+                        <td>${item.cat.name}</td>
                         <td>${item.name}</td>
                         <td>${nl2br(item.description)}</td>
                         <td>${item.price}</td>
@@ -115,6 +118,23 @@ $fileAPI = "pages/" . $basename . "/api.php";
             }
         });
     }
+
+    function fetchCat() {
+            $.ajax({
+                url: 'pages/cat/api.php',
+                type: 'GET',
+                success: function (response) {
+                    let options = '<option value="">Select Cat</option>';
+                    $.each(response, function (index, item) {
+                        options += `<option value="${item.id}">${item.name}</option>`;
+                    });
+                    $('#cat_id').html(options);
+                },
+                error: function () {
+                    toastr.error('ดึงข้อมูลไม่สำเร็จ');
+                }
+            });
+        }
 
     function nl2br (str, replaceMode, isXhtml) {
         let breakTag = (isXhtml) ? '<br />' : '<br>';

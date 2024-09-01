@@ -16,25 +16,29 @@
             </p>
         </a>
     </li>
-    <li class="nav-header">ข้อมูลพื้นฐาน</li>
-    <li class="nav-item">
-        <a href="index.php?page=products" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>สินค้า</p>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="index.php?page=cat" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>หมวดหมู่</p>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a href="index.php?page=users" class="nav-link">
-            <i class="nav-icon fas fa-copy"></i>
-            <p>แอดมิน</p>
-        </a>
-    </li>
+
+    <?php if ($_SESSION['role'] == 'admin'): ?>
+        <li class="nav-header">ข้อมูลพื้นฐาน</li>
+        <li class="nav-item">
+            <a href="index.php?page=products" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>สินค้า</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="index.php?page=cat" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>หมวดหมู่</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="index.php?page=users" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>แอดมิน</p>
+            </a>
+        </li>
+    <?php endif ?>
+
     <li class="nav-header"></li>
     <li class="nav-item">
         <a href="logout.php" class="nav-link">
@@ -44,4 +48,4 @@
             </p>
         </a>
     </li>
-</ul>
+    </ul>
