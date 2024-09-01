@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-sm-12 col-md-4">
             <div class="card card-pink">
                 <div class="card-header">
                     <i class="fas fa-cart-plus"></i>
@@ -11,7 +11,7 @@
                         <input type="hidden" id="id" name="id">
                         <div class="form-group">
                             <label for="name">เลือกสินค้า</label>
-                            <select id="product" name="product_id" class="form-control" required>
+                            <select id="product" name="product_id" class="form-control select2-basic" required>
                                 <!-- รายการสินค้า -->
                             </select>
                         </div>

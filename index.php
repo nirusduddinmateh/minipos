@@ -1,4 +1,5 @@
 <?php
+require_once("config/app.php");
 require_once("core/checklogin.php");
 ?>
 <!DOCTYPE html>
@@ -7,29 +8,7 @@ require_once("core/checklogin.php");
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>miniPOS</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Google Font: Itim, Pridi -->
-    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Pridi:wght@200;300;400;500;600;700&display=swap"
-          rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">
-    <!-- Toastr -->
-    <link rel="stylesheet" href="adminlte/plugins/toastr/toastr.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css">
-    <style>
-        body {
-            font-family: "Itim", cursive;
-            font-weight: 400;
-            font-style: normal;
-        }
-    </style>
+    <?php require_once "_css.php" ?>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -58,7 +37,7 @@ require_once("core/checklogin.php");
         <a href="index.php" class="brand-link">
             <img src="adminlte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">mini<b>POS</b></span>
+            <span class="brand-text font-weight-light"><?php echo $env['APP_NAME'] ?></span>
         </a>
 
         <!-- Sidebar -->
@@ -75,53 +54,7 @@ require_once("core/checklogin.php");
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                    data-accordion="false">
-                    <li class="nav-item">
-                        <a href="index.php?page=dashboard" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Dashboard
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="index.php?page=sales" class="nav-link">
-                            <i class="nav-icon fas fa-cart-plus"></i>
-                            <p>
-                                การขาย
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-header">ข้อมูลพื้นฐาน</li>
-                    <li class="nav-item">
-                        <a href="index.php?page=products" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>สินค้า</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="index.php?page=cat" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>หมวดหมู่</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="index.php?page=users" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>แอดมิน</p>
-                        </a>
-                    </li>
-                    <li class="nav-header"></li>
-                    <li class="nav-item">
-                        <a href="logout.php" class="nav-link">
-                            <i class="nav-icon fas fa-sign-out-alt"></i>
-                            <p>
-                                ออกจากระบบ
-                            </p>
-                        </a>
-                    </li>
-                </ul>
+                <?php include_once "_menu.php"?>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
@@ -150,7 +83,7 @@ require_once("core/checklogin.php");
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 1.0.0
+            <b>Version</b> <?php echo $env['APP_VERSION'] ?>
         </div>
         <strong>Copyright &copy; 2024 <a href="https://dinsoft.com">dinSoft</a>.</strong> All rights reserved.
     </footer>
@@ -160,18 +93,11 @@ require_once("core/checklogin.php");
     </aside>
 </div>
 <!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="adminlte/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Toastr -->
-<script src="adminlte/plugins/toastr/toastr.min.js"></script>
-<!-- AdminLTE App -->
-<script src="adminlte/dist/js/adminlte.min.js"></script>
 <?php
+require_once "_js.php";
 if ($page) {
     include "pages/$page/js.php";
-} ?>
+} 
+?>
 </body>
 </html>

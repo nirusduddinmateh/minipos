@@ -5,11 +5,6 @@ $fileAction = "pages/" . $basename . "/api.php";
 <script>
     $(document).ready(function () {
 
-        // เมื่อปิด model ให้ reset form
-        $('#modal-<?php echo $basename ?>').on('hidden.bs.modal', function (e) {
-            $('#<?php echo $basename; ?>Form')[0].reset();
-        });
-
         // การดึงและแสดงรายการ
         fetch<?php echo $basename; ?>();
 
