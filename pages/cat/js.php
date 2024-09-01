@@ -98,9 +98,7 @@ $fileAction = "pages/" . $basename . "/api.php";
                     rows += `
                     <tr>
                         <td style="width: 100px">${item.id}</td>
-                        <td>${item.username}</td>
                         <td>${item.name}</td>
-                        <td>${item.role}</td>
                         <td style="width: 100px">
                             <button class="btn bg-gradient-primary btn-xs edit-btn" data-id="${item.id}"><i class="fas fa-fw fa-edit"></i></button>
                             <button class="btn bg-gradient-danger btn-xs delete-btn" data-id="${item.id}"> <i class="fas fa-fw fa-trash"></i></button>

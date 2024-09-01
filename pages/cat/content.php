@@ -3,7 +3,7 @@
         <form id="searchForm" >
             <div class="card-header">
                 <h3 class="card-title">
-                    รายการชื่อแอดมิน
+                    รายการหมวดหมู่
                 </h3>
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 190px;">
@@ -27,9 +27,7 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Username</th>
                     <th>Name</th>
-                    <th>Role</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -46,7 +44,7 @@
         <div class="modal-content">
             <form id="<?php echo basename(__DIR__) ?>Form" enctype="multipart/form-data">
                 <div class="modal-header bg-pink">
-                    <h4 class="modal-title">แบบฟอร์มแอดมิน</h4>
+                    <h4 class="modal-title">แบบฟอร์ม</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -54,26 +52,8 @@
                 <div class="modal-body">
                     <input type="hidden" id="id" name="id">
                     <div class="form-group">
-                        <label for="name">ชื่อ-นามสกุล</label>
+                        <label for="name">ชื่อหมวดหมู่</label>
                         <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="role">บทบาท</label>
-                        <select class="form-control" id="role" name="role">
-                            <option value="admin">admin</option>
-                            <option value="user">user</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">

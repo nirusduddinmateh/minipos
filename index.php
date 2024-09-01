@@ -69,7 +69,7 @@ require_once("core/checklogin.php");
                     <img src="adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block"><?php echo $_SESSION['username'] ?></a>
+                    <a href="#" class="d-block"><?php echo $_SESSION['name'].'('.$_SESSION['role'].')' ?></a>
                 </div>
             </div>
 
@@ -98,6 +98,12 @@ require_once("core/checklogin.php");
                         <a href="index.php?page=products" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>สินค้า</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.php?page=cat" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>หมวดหมู่</p>
                         </a>
                     </li>
                     <li class="nav-item">

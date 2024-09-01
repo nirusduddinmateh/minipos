@@ -6,7 +6,7 @@ require_once '../../core/model.php';
 header('Content-Type: application/json');
 $method = $_SERVER['REQUEST_METHOD'];
 
-$model = new Model($db, 'users');
+$model = new Model($db, 'cat');
 
 switch ($method) {
     case 'GET':
@@ -15,23 +15,19 @@ switch ($method) {
         } else {
             $conditions = [];
             if (isset($_GET['search'])) {
-                $conditions['username'] = ['like', '%'.$_GET['search'].'%'];
+                $conditions['name'] = ['like', '%'.$_GET['search'].'%'];
             }
             echo json_encode($model->read($conditions));
         }
         break;
 
     case 'POST':
-        die(500);
         if (!empty($_POST['id'])) {
             // อัปเดทข้อมูล
             $model->update(
                 [
                     'id' => $_POST['id'],
-                    'name' => $_POST['name'],
-                    'role' => $_POST['role'],
-                    'username' => $_POST['username'],
-                    'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+                    'name' => $_POST['name']
                 ],
                 ['id' => $_POST['id']]
             );
@@ -39,10 +35,7 @@ switch ($method) {
         } else {
             // เพิ่มข้อมูล
             $model->create([
-                'name' => $_POST['name'],
-                'role' => $_POST['role'],
-                'username' => $_POST['username'],
-                'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
+                'name' => $_POST['name']
             ]);
             echo json_encode(['message' => 'บันทึกข้อมูลสำเร็จ']);
         }
