@@ -104,6 +104,8 @@ $fileProductAPI = "pages/products/api.php";
 
         // Function to fetch and display transactions
         function fetch<?php echo basename(__DIR__); ?>(search = null) {
+
+
             $.ajax({
                 url: '<?php echo $fileAction; ?>',
                 type: 'GET',
@@ -111,14 +113,16 @@ $fileProductAPI = "pages/products/api.php";
                     search: search
                 },
                 success: function (response) {
+                    
                     let transactionRows = '';
                     $.each(response, function (index, item) {
+                        const dateth = moment(item.transaction_date).fromNow();
                         transactionRows += `<tr>
                                 <td style="width: 100px">${item.id}</td>
                                 <td>${item.product.name}</td>
                                 <td>${item.quantity}</td>
                                 <td>${item.total}</td>
-                                <td>${item.transaction_date}</td>
+                                <td>${dateth}</td>
                                 <td style="width: 100px">
                                     <button class="btn bg-gradient-primary btn-xs edit-btn" data-id="${item.id}">
                                         <i class="fas fa-fw fa-edit"></i>

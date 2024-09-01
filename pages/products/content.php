@@ -58,7 +58,7 @@
 
                     <div class="form-group">
                         <label for="cat_id">เลือกหมวดหมู่</label>
-                        <select id="cat_id" name="cat_id" class="form-control">
+                        <select id="cat_id" name="cat_id" class="form-control select2-basic">
                         </select>
                     </div>
 

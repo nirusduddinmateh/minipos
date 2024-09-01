@@ -7,6 +7,8 @@
 <script src="adminlte/plugins/select2/js/select2.full.min.js"></script>
 <!-- AdminLTE App -->
 <script src="adminlte/dist/js/adminlte.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/locale/th.js"></script>
 <script>
     $(document).ready(function() {
         $('.select2-basic').select2();
